@@ -37,8 +37,7 @@ class Battle:
     def itemUsed(self):
         self.turn, self.notTurn = self.notTurn, self.turn
     
-    def nextStep(self):
-        if self.finished:
+    def nextStep(sechange        if self.finished:
             self.user1.battle = None
             self.user2.battle = None
             return False

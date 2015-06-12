@@ -1,6 +1,5 @@
 #!/usr/bin/env python2
 
-import classes
 from classes.Pokemons import Pokemon
 
 def pokelist(connection, canal, auteur, cmds, canalobj, mogbot):
@@ -12,5 +11,5 @@ def pokelist(connection, canal, auteur, cmds, canalobj, mogbot):
     for elem in user.pokemons:
         if len(pokemons) != 0:
             pokemons += ", "
-        pokemons += elem.str()
+        pokemons += "(pokeId(" + str(elem.pokeid) + ") - " + elem.name + " - level(" + str(elem.level) + "))"
     connection.privmsg(canal, "Liste des pokemons de " + auteur + ": " + pokemons)

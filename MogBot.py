@@ -5,6 +5,7 @@ import irclib
 import ircbot
 import random
 import importlib
+import traceback
 from User import *
 
 class MogBot(ircbot.SingleServerIRCBot):
@@ -71,6 +72,7 @@ class MogBot(ircbot.SingleServerIRCBot):
                     function(connection, canal, auteur, cmds, canalobj, self)
             except Exception, e:
                 print e
+                print(traceback.format_exc())
 
     def on_nicknameinuse(self, connection, event):
         print "Nickname in use!"

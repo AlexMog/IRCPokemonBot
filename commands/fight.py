@@ -1,7 +1,6 @@
 #!/usr/bin/env python2
 
 import copy
-import classes
 import random
 from classes.Pokemons import *
 from classes.Battle import *
@@ -18,10 +17,10 @@ def fight(connection, canal, auteur, cmds, canalobj, mogbot):
     if len(cmds) > 2:
         if cmds[2] == "nature":
             u = pokemonsManager.getRandom()
-            mini = user.active_pokemon.level - 5
+            mini = user.getActivePokemon().level - 5
             if mini <= 0:
                 mini = 1
-            maxi = mini + 10
+            maxi = mini + 5
             u.level = random.randint(mini, maxi)
             battle = Battle(user, u)
             battle.auto = True

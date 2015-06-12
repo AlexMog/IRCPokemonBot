@@ -30,8 +30,17 @@ class User:
         self.items = []
         self.pokeid = 0
         self.battle = None
-        self.active_pokemon = None
+        self.active_pokemon = 0
         self.addPokemon(copy.copy(pokemonsManager.pokemons[random.randint(0, len(pokemonsManager.pokemons) - 1)]))
+
+    def getPokemonById(self, pokeid):
+        for elem in self.pokemons:
+            if elem.pokeid == pokeid:
+                return elem
+        return False
+
+    def getActivePokemon(self):
+        return self.getPokemonById(self.active_pokemon)
 
     def hasAlivePokemon(self):
         for elem in self.pokemons:
@@ -68,13 +77,15 @@ class User:
     def addPokemon(self, pokemon):
         pokemon.pokeid = self.pokeid
         self.pokemons.append(pokemon)
-        self.active_pokemon = pokemon
+        self.active_pokemon = self.pokeid
         self.pokeid += 1
 
     def removePokemon(self, pokemon):
         i = 0
         for i in range(len(self.pokemons)):
             if self.pokemons[i].pokeid == pokemon.pokeid:
+                if self.pokemons[i].pokeid == self.active_pokemon:
+                    self.active_pokemon = 0
                 self.pokemons.pop(i)
                 return
 
